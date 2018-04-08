@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="RxTools-v1.7.7.3">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/375325b307d5c1b6f66f503157fc6716e6a710d8/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/375325b307d5c1b6f66f503157fc6716e6a710d8/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/375325b307d5c1b6f66f503157fc6716e6a710d8/output/jars/libs/zip4j_1.3.2.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/375325b307d5c1b6f66f503157fc6716e6a710d8/output/jars/libs/alipaySdk-20170309.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/375325b307d5c1b6f66f503157fc6716e6a710d8/output/jars/libs/zxing_core_3.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
