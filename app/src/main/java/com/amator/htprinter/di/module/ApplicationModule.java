@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import com.amator.htprinter.HtPrinterApplcation;
 import com.amator.htprinter.di.ContextLife;
 import com.amator.htprinter.di.PerApp;
+import com.amator.htprinter.module.MyObjectBox;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,6 +16,7 @@ import com.yanzhenjie.nohttp.OkHttpNetworkExecutor;
 
 import dagger.Module;
 import dagger.Provides;
+import io.objectbox.BoxStore;
 
 /**
  * Created by AmatorLee on 2018/4/4.
@@ -61,5 +63,13 @@ public class ApplicationModule {
         gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
         return gsonBuilder.create();
     }
+
+    @Provides
+    @PerApp
+    public BoxStore provideBox(){
+        return MyObjectBox.builder().androidContext(mApplication.getApplicationContext()).build();
+    }
+
+
 
 }

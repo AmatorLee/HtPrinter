@@ -1,7 +1,7 @@
 package com.amator.htprinter.presenter.impl;
 
 import com.amator.htprinter.presenter.BasePresenter;
-import com.amator.htprinter.ui.BaseView;
+import com.amator.htprinter.ui.view.BaseView;
 
 /**
  * Created by AmatorLee on 2018/4/4.

@@ -12,7 +12,7 @@ import com.amator.htprinter.di.component.DaggerFragmentComponent;
 import com.amator.htprinter.di.component.FragmentComponent;
 import com.amator.htprinter.di.module.FragmentModule;
 import com.amator.htprinter.presenter.impl.BasePresenterImpl;
-import com.amator.htprinter.ui.BaseView;
+import com.amator.htprinter.ui.view.BaseView;
 import com.vondear.rxtools.view.RxToast;
 
 import butterknife.ButterKnife;

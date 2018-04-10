@@ -1,4 +1,4 @@
-package com.amator.htprinter.ui;
+package com.amator.htprinter.ui.view;
 
 /**
  * Created by AmatorLee on 2018/4/4.

@@ -1,23 +1,18 @@
 package com.amator.htprinter.ui.activity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.amator.htprinter.HtPrinterApplcation;
 import com.amator.htprinter.di.component.ActivityComponent;
 import com.amator.htprinter.di.component.DaggerActivityComponent;
 import com.amator.htprinter.di.module.ActivityModule;
 import com.amator.htprinter.presenter.impl.BasePresenterImpl;
-import com.amator.htprinter.ui.BaseView;
+import com.amator.htprinter.ui.view.BaseView;
 import com.vondear.rxtools.RxActivityTool;
 import com.vondear.rxtools.RxDeviceTool;
 import com.vondear.rxtools.view.RxToast;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -37,10 +32,6 @@ public abstract class BaseActivity<T extends BasePresenterImpl> extends AppCompa
         super.onCreate(savedInstanceState);
         RxDeviceTool.setPortrait(this);
         setContentView(getLayoutId());
-        //当系统版本为4.4或者4.4以上时可以使用沉浸式状态栏
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
         RxActivityTool.addActivity(this);
         mUnbinder = ButterKnife.bind(this);
         initActivityComponent();
@@ -48,7 +39,7 @@ public abstract class BaseActivity<T extends BasePresenterImpl> extends AppCompa
         if (mPresenter != null){
             mPresenter.attachView(this);
         }
-        initView();
+        initView(savedInstanceState);
         setListener();
     }
 
@@ -62,7 +53,7 @@ public abstract class BaseActivity<T extends BasePresenterImpl> extends AppCompa
 
     protected abstract void setListener();
 
-    protected abstract void initView();
+    protected abstract void initView(Bundle savedInstanceState);
 
     protected abstract int getLayoutId();
 

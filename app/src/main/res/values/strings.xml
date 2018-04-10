@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HTPrinter</string>
+    <string name="txt_main_box_name_good">商品</string>
+    <string name="txt_main_box_name_printer">打印</string>
 </resources>

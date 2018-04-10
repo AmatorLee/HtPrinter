@@ -7,4 +7,5 @@ ext{
     application_id = "com.amatorlee.HTPrinter"
     app_version_code = 1
     app_version_name = '1.0'
+    objectbox_version = '1.4.4'
 }

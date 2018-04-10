@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LPAPI-2018-03-13-R">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/LPAPI-2018-03-13-R.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

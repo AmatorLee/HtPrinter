@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.yanzhenjie.nohttp.InitializationConfig;
 
 import dagger.Component;
+import io.objectbox.BoxStore;
 
 /**
  * Created by AmatorLee on 2018/4/4.
@@ -23,5 +24,7 @@ public interface ApplicationComponent {
     InitializationConfig getConfig();
 
     Gson getGson();
+
+    BoxStore getBoxStore();
 
 }

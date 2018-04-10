@@ -5,6 +5,7 @@ import android.app.Application;
 import com.amator.htprinter.di.component.ApplicationComponent;
 import com.amator.htprinter.di.component.DaggerApplicationComponent;
 import com.amator.htprinter.di.module.ApplicationModule;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.vondear.rxtools.RxTool;
 import com.yanzhenjie.nohttp.NoHttp;
 
@@ -15,7 +16,7 @@ import com.yanzhenjie.nohttp.NoHttp;
 public class HtPrinterApplcation extends Application{
 
     private static ApplicationComponent sApplicationComponent;
-
+    public static String BASE_API = "http://112.124.22.238:8081/appstore/";
 
     @Override
     public void onCreate() {
@@ -23,6 +24,7 @@ public class HtPrinterApplcation extends Application{
         RxTool.init(this);
         initApplicationComponent();
         NoHttp.initialize(sApplicationComponent.getConfig());
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     private void initApplicationComponent() {

@@ -6,6 +6,8 @@ import android.content.Context;
 import com.amator.htprinter.di.ContextLife;
 import com.amator.htprinter.di.PerFragment;
 import com.amator.htprinter.di.module.FragmentModule;
+import com.amator.htprinter.ui.fragment.BoxFragment;
+import com.amator.htprinter.ui.fragment.PrinterFragment;
 
 import dagger.Component;
 
@@ -23,5 +25,9 @@ public interface FragmentComponent {
     Context getActivityContext();
 
     Activity getActivity();
+
+    void inject(BoxFragment fragment);
+
+    void inject(PrinterFragment fragment);
 
 }

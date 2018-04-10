@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#e6350e</color>
+    <color name="colorPrimaryDark">#D81E06</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="tab_normal_color">#707070</color>
+    <color name="tab_selected_color">#D81E06</color>
 </resources>

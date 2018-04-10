@@ -3,7 +3,7 @@ package com.amator.htprinter.presenter.impl;
 import android.util.Log;
 
 import com.amator.htprinter.presenter.MainActivityPresenter;
-import com.amator.htprinter.ui.MainView;
+import com.amator.htprinter.ui.view.MainView;
 
 import javax.inject.Inject;
 
