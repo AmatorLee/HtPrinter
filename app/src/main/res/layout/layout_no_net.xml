@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/status_img_noNet"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_centerInParent="true"
         android:src="@mipmap/icon_nonet"/>
 
@@ -20,7 +20,7 @@
         android:layout_marginTop="10dp"
         android:text="没有网络，点击重试"
         android:textColor="#bfbfbf"
-        android:textSize="18sp"/>
+        android:textSize="16sp"/>
 
 
 </RelativeLayout>

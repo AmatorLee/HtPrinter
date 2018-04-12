@@ -3,24 +3,18 @@ package com.amator.htprinter.ui.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.widget.FrameLayout;
 
 import com.amator.htprinter.R;
+import com.amator.htprinter.base.BaseActivity;
 import com.amator.htprinter.presenter.impl.MainActivityPresenterImpl;
-import com.amator.htprinter.ui.fragment.BoxFragment;
-import com.amator.htprinter.ui.fragment.PrinterFragment;
 import com.amator.htprinter.ui.view.MainView;
 import com.amator.htprinter.uitl.FragmentFactory;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
-import com.vondear.rxtools.RxLogTool;
-import com.yanzhenjie.nohttp.Logger;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends BaseActivity<MainActivityPresenterImpl> implements MainView {
 

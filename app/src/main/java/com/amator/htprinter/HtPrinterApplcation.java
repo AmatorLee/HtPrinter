@@ -2,12 +2,12 @@ package com.amator.htprinter;
 
 import android.app.Application;
 
+import com.amator.htprinter.base.Constans;
 import com.amator.htprinter.di.component.ApplicationComponent;
 import com.amator.htprinter.di.component.DaggerApplicationComponent;
 import com.amator.htprinter.di.module.ApplicationModule;
+import com.itheima.retrofitutils.ItheimaHttp;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
-import com.vondear.rxtools.RxTool;
-import com.yanzhenjie.nohttp.NoHttp;
 
 /**
  * Created by AmatorLee on 2018/4/4.
@@ -16,15 +16,15 @@ import com.yanzhenjie.nohttp.NoHttp;
 public class HtPrinterApplcation extends Application{
 
     private static ApplicationComponent sApplicationComponent;
-    public static String BASE_API = "http://112.124.22.238:8081/appstore/";
+    public static final String DB_NAME = "HtPrinter-db";
 
     @Override
     public void onCreate() {
         super.onCreate();
-        RxTool.init(this);
+//        RxTool.init(this);
         initApplicationComponent();
-        NoHttp.initialize(sApplicationComponent.getConfig());
         ZXingLibrary.initDisplayOpinion(this);
+        ItheimaHttp.init(this, Constans.BASE_URL);
     }
 
     private void initApplicationComponent() {

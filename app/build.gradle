@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: 'version.gradle'
-apply plugin: 'io.objectbox'
+apply plugin: 'org.greenrobot.greendao'
 //apply plugin: 'com.neenbedankt.android-apt'
 
 android {
@@ -20,6 +20,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    greendao {
+        //数据库的schema版本，也可以理解为数据库版本号
+        schemaVersion 1
+        //设置DaoMaster、DaoSession、Dao包名，也就是要放置这些类的包的全路径。
+        daoPackage 'com.amator.htprinter.dao'
+        //设置DaoMaster、DaoSession、Dao目录
+        targetGenDir 'src/main/java'
+    }
 }
 
 dependencies {
@@ -28,20 +36,21 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.github.vondear:RxTools:v1.7.7.3'
     //    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.google.dagger:dagger:2.6'
     annotationProcessor "com.google.dagger:dagger-compiler:2.6"
-    compile 'com.yanzhenjie.nohttp:okhttp:1.1.9'
-    compile 'com.google.code.gson:gson:2.8.2'
     testCompile 'junit:junit:4.12'
-    compile 'io.objectbox:objectbox-android:1.2.1'
     compile 'cn.yipianfengye.android:zxing-library:2.2'
     compile 'com.github.chaychan:BottomBarLayout:1.1.2'
     //建议使用最新版本
     compile files('libs/LPAPI-2018-03-13-R.jar')
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
-    compile 'cn.lemon:RefreshRecyclerView:1.4.0'
+//    compile 'cn.lemon:RefreshRecyclerView:1.4.0'
+    compile 'com.android.support:cardview-v7:26.0.0-alpha1'
+    compile 'com.youth.banner:banner:1.4.10'  //最新版本
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.open-android:RetrofitUtils:0.1.9'
 }

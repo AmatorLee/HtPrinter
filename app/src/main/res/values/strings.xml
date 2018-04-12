@@ -2,4 +2,8 @@
     <string name="app_name">HTPrinter</string>
     <string name="txt_main_box_name_good">商品</string>
     <string name="txt_main_box_name_printer">打印</string>
+    <string name="txt_author">作者:</string>
+    <string name="txt_tag">分类</string>
+    <string name="txt_no_net">网络不给力</string>
+    <string name="txt_banner_load_error">推荐数据加载错误</string>
 </resources>

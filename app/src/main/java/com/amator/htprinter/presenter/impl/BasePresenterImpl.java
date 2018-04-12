@@ -1,7 +1,7 @@
 package com.amator.htprinter.presenter.impl;
 
-import com.amator.htprinter.presenter.BasePresenter;
-import com.amator.htprinter.ui.view.BaseView;
+import com.amator.htprinter.base.BasePresenter;
+import com.amator.htprinter.base.BaseView;
 
 /**
  * Created by AmatorLee on 2018/4/4.
@@ -9,7 +9,7 @@ import com.amator.htprinter.ui.view.BaseView;
 
 public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T>{
 
-    private T mView;
+    protected T mView;
 
     @Override
     public void attachView(T view) {

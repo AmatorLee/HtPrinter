@@ -1,16 +1,10 @@
 package com.amator.htprinter.uitl;
 
-import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 
-import com.amator.htprinter.ui.fragment.BaseFragment;
+import com.amator.htprinter.base.BaseFragment;
 import com.amator.htprinter.ui.fragment.BoxFragment;
 import com.amator.htprinter.ui.fragment.PrinterFragment;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.inject.Inject;
 
 /**
  * Created by AmatorLee on 2018/4/10.

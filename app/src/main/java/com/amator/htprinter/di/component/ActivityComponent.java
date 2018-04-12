@@ -6,6 +6,8 @@ import android.content.Context;
 import com.amator.htprinter.di.ContextLife;
 import com.amator.htprinter.di.PerActivity;
 import com.amator.htprinter.di.module.ActivityModule;
+import com.amator.htprinter.ui.activity.BannerContentActivity;
+import com.amator.htprinter.ui.activity.HomePageContentActivity;
 import com.amator.htprinter.ui.activity.MainActivity;
 
 import dagger.Component;
@@ -14,7 +16,7 @@ import dagger.Component;
  * Created by AmatorLee on 2018/4/4.
  */
 @PerActivity
-@Component(modules = ActivityModule.class,dependencies = ApplicationComponent.class)
+@Component(modules = ActivityModule.class, dependencies = ApplicationComponent.class)
 public interface ActivityComponent {
 
 
@@ -28,5 +30,8 @@ public interface ActivityComponent {
 
     void inject(MainActivity mainActivity);
 
+    void inject(BannerContentActivity activity);
+
+    void inject(HomePageContentActivity activity);
 
 }

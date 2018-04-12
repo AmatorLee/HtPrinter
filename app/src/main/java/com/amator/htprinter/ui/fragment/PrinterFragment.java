@@ -3,6 +3,7 @@ package com.amator.htprinter.ui.fragment;
 import android.support.v7.widget.Toolbar;
 
 import com.amator.htprinter.R;
+import com.amator.htprinter.base.BaseFragment;
 import com.amator.htprinter.presenter.impl.PrinterFragmentPresenterImpl;
 import com.amator.htprinter.ui.view.PrinterView;
 

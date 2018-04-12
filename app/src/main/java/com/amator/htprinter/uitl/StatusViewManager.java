@@ -308,7 +308,7 @@ public class StatusViewManager extends StatusInterface implements View.OnClickLi
         mStatusContainer = null;
     }
 
-    interface onRetryClick {
+    public interface onRetryClick {
         void onRetryLoad();
     }
 

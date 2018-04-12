@@ -21,12 +21,12 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <cn.lemon.view.RefreshRecyclerView
+    <com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView
         android:id="@+id/recycler_refresh"
-        app:load_more_enable="false"
+        app:load_more_enable="true"
         app:refresh_enable="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></cn.lemon.view.RefreshRecyclerView>
+        android:layout_height="match_parent"></com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView>
 
 
 </LinearLayout>
