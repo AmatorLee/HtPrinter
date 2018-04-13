@@ -134,7 +134,7 @@ public class BoxFragment extends BaseFragment<BoxFragmentPresenterImpl> implemen
         initHeader();
         recycler_refresh.setLayoutManager(new LinearLayoutManager(mFragmentComponent.getActivityContext()));
         recycler_refresh.setItemSpace(0, 0, 0, 10);
-        recycler_refresh.setSwipeRefreshColors(0x0092eb);
+        recycler_refresh.setSwipeRefreshColorsFromRes(R.color.colorPrimary, R.color.colorPrimaryDark);
         recycler_refresh.setAdapter(box_adapter);
         box_adapter.setHeader(head_view);
         status_view_manager = StatusViewManager.createView(mFragmentComponent.getActivityContext(),
@@ -185,7 +185,7 @@ public class BoxFragment extends BaseFragment<BoxFragmentPresenterImpl> implemen
 
     public void startContentActivity(com.amator.htprinter.module.Banner banner) {
         Intent intent = new Intent(mFragmentComponent.getActivity(), BannerContentActivity.class);
-        intent.putExtra("banner",banner);
+        intent.putExtra("banner", banner);
         startActivity(intent);
     }
 }

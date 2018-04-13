@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -51,6 +52,7 @@ public class HomePageContentActivity extends BaseActivity<ContentActivityPresent
     private boolean isExcuteError = false;
     private StatusViewManager status_view_manager;
     private HomePage homePahe;
+    private ActionBar action_bar;
 
     @Override
     protected void setListener() {
@@ -141,7 +143,8 @@ public class HomePageContentActivity extends BaseActivity<ContentActivityPresent
     @Override
     protected void initView(Bundle savedInstanceState) {
         setSupportActionBar(toolbar_content);
-        toolbar_content.setTitle("");
+        action_bar = getSupportActionBar();
+        action_bar.setTitle("");
         status_view_manager = StatusViewManager.createView(this, webview);
     }
 
