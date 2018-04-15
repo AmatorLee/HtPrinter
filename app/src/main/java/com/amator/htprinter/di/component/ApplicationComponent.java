@@ -1,6 +1,7 @@
 package com.amator.htprinter.di.component;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 
 import com.amator.htprinter.di.ContextLife;
@@ -23,4 +24,5 @@ public interface ApplicationComponent {
 
     Handler handler();
 
+    SharedPreferences getSharePreference();
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="print_quality">
+        <item>@string/print_param_default</item>
+        <item>1 (低)</item>
+        <item>2 (中)</item>
+        <item>3 (高)</item>
+    </string-array>
+
+    <string-array name="print_density">
+        <item>@string/print_param_default</item>
+        <item>1 (最淡)</item>
+        <item>2</item>
+        <item>3 (较淡)</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6 (正常)</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12(较深)</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20(最深)</item>
+    </string-array>
+    
+    <string-array name="print_speed">
+        <item>@string/print_param_default</item>
+        <item>1 (最慢)</item>
+        <item>2 (较慢)</item>
+        <item>3 (正常)</item>
+        <item>4 (较快)</item>
+        <item>5 (最快)</item>
+    </string-array>
+    
+    <string-array name="gap_type">
+        <item>@string/print_param_default</item>
+        <item>连续纸</item>
+        <item>定位孔</item>
+        <item>间隙纸</item>
+        <item>黑标纸</item>
+    </string-array>
+    
+    <string-array name="test_pic_name">
+        <item>test1.png</item>
+        <item>test2.png</item>
+        <item>test3.png</item>
+        <item>test4.png</item>
+    </string-array>
+
+    <integer-array name="test_pic_orientation">
+        <item>0</item>
+        <item>90</item>
+        <item>0</item>
+        <item>90</item>
+    </integer-array>
+
+</resources>

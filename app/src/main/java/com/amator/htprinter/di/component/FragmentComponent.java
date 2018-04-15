@@ -2,8 +2,11 @@ package com.amator.htprinter.di.component;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Handler;
 
 import com.amator.htprinter.di.ContextLife;
+import com.amator.htprinter.di.PerApp;
 import com.amator.htprinter.di.PerFragment;
 import com.amator.htprinter.di.module.FragmentModule;
 import com.amator.htprinter.ui.fragment.BoxFragment;
@@ -25,6 +28,8 @@ public interface FragmentComponent {
     Context getActivityContext();
 
     Activity getActivity();
+
+    SharedPreferences getSharePreference();
 
     void inject(BoxFragment fragment);
 

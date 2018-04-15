@@ -6,4 +6,46 @@
     <string name="txt_tag">分类</string>
     <string name="txt_no_net">网络不给力</string>
     <string name="txt_banner_load_error">推荐数据加载错误</string>
+
+    <!--打印机相关-->
+    <string name="printer">打印机</string>
+    <string name="chinesecolon">：</string>
+    <string name="printtext">打印文本</string>
+    <string name="printtext1dbarcode">文本一维码</string>
+    <string name="print2dbarcode">打印二维码</string>
+    <string name="printbitmap">打印图片</string>
+    <string name="romupgrade">打印机固件升级</string>
+    <string name="noconnectprinter">打印机：未连接打印机</string>
+    <string name="unsupportedbluetooth">当前设备不支持蓝牙！</string>
+    <string name="unenablebluetooth">蓝牙适配器未开启！</string>
+    <string name="selectbondeddevice">选择已绑定的设备</string>
+    <string name="setprintquality">设置打印质量</string>
+    <string name="setprintdensity">设置打印浓度</string>
+    <string name="setprintspeed">设置打印速度</string>
+    <string name="setgaptype">设置间隔类型</string>
+    <string name="printquality">打印质量：\n</string>
+    <string name="printdensity">打印浓度：\n</string>
+    <string name="printspeed">打印速度：\n</string>
+    <string name="gaptype">间隔类型：\n</string>
+    <string name="nowisconnectingprinter">正在连接</string>
+    <string name="connectprintersuccess">连接打印机成功！</string>
+    <string name="connectprinterfailed">连接打印机失败！</string>
+    <string name="nowisprinting">正在打印标签&#8230;</string>
+    <string name="printsuccess">标签打印成功！</string>
+    <string name="printfailed">标签打印失败！</string>
+    <string name="pleaseconnectprinter">打印机未连接，请先连接打印机！</string>
+    <string name="waitconnectingprinter">正在连接打印机，请稍候！</string>
+    <string name="textvalue">文本数据：</string>
+    <string name="onedbarcodevalue">一维码数据：</string>
+    <string name="twodbarcodevalue">二维码数据：</string>
+    <string name="bitmappreview">图片预览</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="print_param_default">随打印机设置</string>
+    <string name="quality">打印质量</string>
+    <string name="density">打印浓度</string>
+    <string name="gap_type">间隔类型</string>
+    <string name="speed">打印速率</string>
+
+
 </resources>

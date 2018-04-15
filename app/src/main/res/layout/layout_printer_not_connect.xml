@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_printer_not_connect"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/icon_error"/>
+
+    <TextView
+        android:id="@+id/txt_printer_not_connect_tips"
+        android:text="@string/pleaseconnectprinter"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/img_printer_not_connect"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_select_printer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_printer_not_connect_tips"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/printer_not_connect_selector"
+        android:paddingBottom="6dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="6dp"
+        android:text="选择打印机"
+        android:textColor="@color/tab_normal_color"
+        android:textSize="16sp"/>
+
+</RelativeLayout>

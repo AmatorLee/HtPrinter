@@ -2,6 +2,8 @@ package com.amator.htprinter.presenter.impl;
 
 import com.amator.htprinter.presenter.PrinterFragmentPresenter;
 import com.amator.htprinter.ui.view.PrinterView;
+import com.dothantech.lpapi.LPAPI;
+import com.dothantech.printer.IDzPrinter;
 
 import javax.inject.Inject;
 
