@@ -24,16 +24,16 @@ public class DialogUtil {
     }
 
     public void normal(Context context, String content) {
-        dismissDialog(dialog);
+        dismissDialog();
         dialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
-        dialog.setTitle("");
+        dialog.setTitleText("");
         dialog.setContentText(content);
         dialog.setCancelable(true);
         dialog.getProgressHelper().setBarColor(context.getColor(R.color.text_value));
         dialog.show();
     }
 
-    public void dismissDialog(SweetAlertDialog dialog) {
+    public void dismissDialog() {
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
@@ -41,9 +41,9 @@ public class DialogUtil {
     }
 
     public void succeed(Context context, String content) {
-        dismissDialog(dialog);
+        dismissDialog();
         dialog = new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE);
-        dialog.setTitle("");
+        dialog.setTitleText("");
         dialog.setContentText(content);
         dialog.setCancelable(true);
         dialog.show();
@@ -51,9 +51,9 @@ public class DialogUtil {
 
 
     public void error(Context context, String content) {
-        dismissDialog(dialog);
+        dismissDialog();
         dialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE);
-        dialog.setTitle("");
+        dialog.setTitleText("");
         dialog.setContentText(content);
         dialog.setCancelable(true);
         dialog.show();
@@ -62,8 +62,7 @@ public class DialogUtil {
     public void dialogWithConfirmAndCancel(Context context, String content, SweetAlertDialog.OnSweetClickListener confirmListener,
                                            SweetAlertDialog.OnSweetClickListener cancelListener) {
         dialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
-        dialog.setContentText(content);
-        dialog.setTitle("");
+        dialog.setTitleText(content);;
         dialog.setConfirmText(context.getString(R.string.ok));
         dialog.setConfirmClickListener(confirmListener);
         dialog.setCancelText(context.getString(R.string.cancel));

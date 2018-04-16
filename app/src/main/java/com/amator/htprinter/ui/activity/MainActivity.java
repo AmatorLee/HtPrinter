@@ -7,10 +7,16 @@ import android.support.v4.app.FragmentManager;
 import com.amator.htprinter.R;
 import com.amator.htprinter.base.BaseActivity;
 import com.amator.htprinter.presenter.impl.MainActivityPresenterImpl;
+import com.amator.htprinter.ui.fragment.PrinterFragment;
 import com.amator.htprinter.ui.view.MainView;
 import com.amator.htprinter.uitl.FragmentFactory;
+import com.amator.htprinter.uitl.RxLogTool;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import javax.inject.Inject;
 
@@ -25,7 +31,8 @@ public class MainActivity extends BaseActivity<MainActivityPresenterImpl> implem
     @BindView(R.id.bottom_print)
     BottomBarItem btn_print;
     @BindView(R.id.bottom_bar_container)
-    BottomBarLayout btn_bottom_bar_container;;
+    BottomBarLayout btn_bottom_bar_container;
+    ;
     @Inject
     public MainActivityPresenterImpl mMainActivityPresenter;
     private BottomBarLayout.OnItemSelectedListener bottom_bar_select_listener;
@@ -49,12 +56,12 @@ public class MainActivity extends BaseActivity<MainActivityPresenterImpl> implem
         bottom_bar_select_listener = new BottomBarLayout.OnItemSelectedListener() {
             @Override
             public void onItemSelected(BottomBarItem item, int i, int i1) {
-                if (i1 == 0){
+                if (i1 == 0) {
                     fragment_manager.beginTransaction()
                             .show(fragment_box)
                             .hide(fragment_printer)
                             .commit();
-                }else if (i1 == 1){
+                } else if (i1 == 1) {
                     fragment_manager.beginTransaction()
                             .show(fragment_printer)
                             .hide(fragment_box)
@@ -67,6 +74,36 @@ public class MainActivity extends BaseActivity<MainActivityPresenterImpl> implem
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+        super.onDestroy();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getPrintEvent(String event) {
+        RxLogTool.d(TAG, "json: " + event);
+//        btn_bottom_bar_container.getBottomItem(1).performClick();
+        btn_bottom_bar_container.setCurrentItem(1);
+        RxLogTool.d(TAG,"printer is null: " + (fragment_printer == null));
+        RxLogTool.d(TAG,"box is null: " + (fragment_box == null));
+        fragment_manager.beginTransaction()
+                .show(fragment_printer)
+                .hide(fragment_box)
+                .commitAllowingStateLoss();
+        ((PrinterFragment) fragment_printer).print(event);
     }
 
     @Override
@@ -90,13 +127,13 @@ public class MainActivity extends BaseActivity<MainActivityPresenterImpl> implem
         } else {
             fragment_box = getSupportFragmentManager().findFragmentByTag("fragment_box");
             fragment_printer = getSupportFragmentManager().findFragmentByTag("fragment_printer");
-            if (fragment_box == null){
+            if (fragment_box == null) {
                 fragment_box = FragmentFactory.create(FragmentFactory.BOX_FRAGMENT);
                 fragment_manager.beginTransaction()
                         .add(R.id.rl_main_container, fragment_box, "fragment_box")
                         .commit();
             }
-            if (fragment_printer == null){
+            if (fragment_printer == null) {
                 fragment_printer = FragmentFactory.create(FragmentFactory.PRINTER_FRAGMENT);
                 fragment_manager.beginTransaction()
                         .add(R.id.rl_main_container, fragment_printer, "fragment_printer")

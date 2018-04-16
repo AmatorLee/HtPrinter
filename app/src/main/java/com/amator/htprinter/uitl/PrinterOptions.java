@@ -16,7 +16,7 @@ import static com.uuzuche.lib_zxing.DisplayUtil.density;
  * Created by AmatorLee on 2018/4/15.
  */
 
-public class PrinterOption {
+public class PrinterOptions {
 
     public static String[] getArrays(Context context,int array_id){
         return context.getResources().getStringArray(array_id);

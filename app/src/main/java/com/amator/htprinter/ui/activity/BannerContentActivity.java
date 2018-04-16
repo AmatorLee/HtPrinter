@@ -24,8 +24,13 @@ import com.amator.htprinter.dialog.ActionSheetDialog;
 import com.amator.htprinter.module.Banner;
 import com.amator.htprinter.presenter.impl.ContentActivityPresenterImpl;
 import com.amator.htprinter.ui.view.ContentView;
+import com.amator.htprinter.uitl.PrinterType;
 import com.amator.htprinter.uitl.RxLogTool;
 import com.amator.htprinter.uitl.StatusViewManager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.inject.Inject;
 
@@ -232,5 +237,27 @@ public class BannerContentActivity extends BaseActivity<ContentActivityPresenter
     @Override
     public void onClick(int which) {
         RxLogTool.d(TAG, "which: " + which);
+        JSONObject res = new JSONObject();
+        try {
+            res.put("url", banner.getUrl());
+            res.put("title", banner.getTitle());
+            PrinterType type = null;
+            switch (which) {
+                case 1:
+                    type = PrinterType.ONE;
+                    break;
+                case 2:
+                    type = PrinterType.TWO;
+                    break;
+                case 3:
+                    type = PrinterType.TEXT;
+                    break;
+            }
+            res.put("type", type.toString());
+            EventBus.getDefault().post(res.toString());
+            finish();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

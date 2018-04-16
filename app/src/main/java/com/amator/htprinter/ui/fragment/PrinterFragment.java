@@ -21,10 +21,16 @@ import com.amator.htprinter.presenter.impl.PrinterFragmentPresenterImpl;
 import com.amator.htprinter.ui.activity.PrinterListActivity;
 import com.amator.htprinter.ui.view.PrinterView;
 import com.amator.htprinter.uitl.DialogUtil;
-import com.amator.htprinter.uitl.PrinterOption;
+import com.amator.htprinter.uitl.PrinterInteractor;
+import com.amator.htprinter.uitl.PrinterOptions;
+import com.amator.htprinter.uitl.PrinterType;
 import com.amator.htprinter.uitl.ViewUtil;
 import com.dothantech.lpapi.LPAPI;
 import com.dothantech.printer.IDzPrinter;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -158,35 +164,35 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
             @Override
             public void onClick(View view) {
                 printer_menu.close(true);
-                qualit_res = PrinterOption.getPrintQuality(mFragmentComponent.getActivityContext(), printer_address);
+                qualit_res = PrinterOptions.getPrintQuality(mFragmentComponent.getActivityContext(), printer_address);
             }
         });
         density.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 printer_menu.close(true);
-                density_res = PrinterOption.getDensity(mFragmentComponent.getActivityContext(), printer_address);
+                density_res = PrinterOptions.getDensity(mFragmentComponent.getActivityContext(), printer_address);
             }
         });
         gap_type.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 printer_menu.close(true);
-                gap_type_res = PrinterOption.getPrintType(mFragmentComponent.getActivityContext(), printer_address);
+                gap_type_res = PrinterOptions.getPrintType(mFragmentComponent.getActivityContext(), printer_address);
             }
         });
         speed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 printer_menu.close(true);
-                speed_res = PrinterOption.getSpeed(mFragmentComponent.getActivityContext(), printer_address);
+                speed_res = PrinterOptions.getSpeed(mFragmentComponent.getActivityContext(), printer_address);
             }
         });
     }
 
     @Override
     public void initPrinter() {
-        printer_api = LPAPI.Factory.createInstance(printer_callback);
+
         if (printer_address != null) {
             if (printer_api.openPrinterByAddress(printer_address)) {
                 onPrinterConnecting(printer_address, true);
@@ -249,13 +255,66 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
     }
 
     @Override
-    public void onPrintSucceed() {
+    public void onPrinStart() {
+        showToast(ViewUtil.getString(R.string.nowisprinting));
+        startAnimation();
+    }
 
+    @Override
+    public void onPrintSucceed() {
+        stopAnimation();
+        showToast(ViewUtil.getString(R.string.printsuccess));
     }
 
     @Override
     public void onPrintFailed() {
+        stopAnimation();
+        showToast(ViewUtil.getString(R.string.printfailed));
+    }
 
+    @Override
+    public void print(String event) {
+        if (!isPrinterConnected()){
+            return;
+        }
+        try {
+            JSONObject jsonObject = new JSONObject(event);
+            String type = jsonObject.getString("type");
+            PrinterType printerType = Enum.valueOf(PrinterType.class, type);
+            String title = jsonObject.getString("title");
+            String url = jsonObject.getString("url");
+            StringBuilder content = new StringBuilder();
+            content.append("Title:");
+            content.append(title);
+            content.append("\n");
+            content.append("Url:");
+            content.append(url);
+            switch (printerType) {
+                case ONE:
+                    if (PrinterInteractor.print1dCode(content.toString(), printer_api, printWithBundle(1, 90))) {
+                        onPrinStart();
+                    } else {
+                        onPrintFailed();
+                    }
+                    break;
+                case TWO:
+                    if (PrinterInteractor.print2DCode(content.toString(), printer_api, printWithBundle(1, 0))) {
+                        onPrinStart();
+                    } else {
+                        onPrintFailed();
+                    }
+                    break;
+                case TEXT:
+                    if (PrinterInteractor.printText(content.toString(), printer_api, printWithBundle(1, 0))) {
+                        onPrinStart();
+                    } else {
+                        onPrintFailed();
+                    }
+                    break;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -267,7 +326,15 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
     @Override
     protected void initView() {
         btn_connect_printer = ViewUtil.bindView(layout_not_connect, R.id.btn_select_printer);
-        initPrinter();
+        printer_api = LPAPI.Factory.createInstance(printer_callback);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            initPrinter();
+        }
     }
 
     @Override
@@ -289,8 +356,8 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constans.REQUST_PRINTER_CODE){
-            if (resultCode == Constans.RESULT_PRINTER_CODE){
+        if (requestCode == Constans.REQUST_PRINTER_CODE) {
+            if (resultCode == Constans.RESULT_PRINTER_CODE) {
                 SharedPreferences sharedPreferences = mFragmentComponent.getSharePreference();
                 String lastPrinterMac = sharedPreferences.getString(Constans.PRINTER_MAC, null);
                 String lastPrinterName = sharedPreferences.getString(Constans.PRINTER_NAME_KEY, null);
@@ -301,7 +368,7 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
                 } else {
                     printer_address = new IDzPrinter.PrinterAddress(lastPrinterName, lastPrinterMac, lastAddressType);
                 }
-                initPrinter();
+//                initPrinter();
             }
         }
     }

@@ -21,8 +21,12 @@ public interface PrinterView extends BaseView {
 
     boolean isPrinterConnected();
 
+    void onPrinStart();
+
     void onPrintSucceed();
 
     void onPrintFailed();
 
+
+    void print(String event);
 }
