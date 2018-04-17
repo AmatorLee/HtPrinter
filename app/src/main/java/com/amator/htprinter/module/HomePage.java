@@ -1,16 +1,31 @@
 package com.amator.htprinter.module;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+
 import java.io.Serializable;
+import org.greenrobot.greendao.annotation.Generated;
 
 
 
 /**
  * Created by AmatorLee on 2018/4/11.
  */
-
+@Entity
 public class HomePage implements Serializable{
 
     private static final long serialVersionUID = HomePage.class.hashCode();
+
+    @Id(autoincrement = true)
+    private long db_index;
+
+    public long getDb_index() {
+        return db_index;
+    }
+
+    public void setDb_index(long db_index) {
+        this.db_index = db_index;
+    }
 
     /**
      * apkLink :
@@ -57,6 +72,40 @@ public class HomePage implements Serializable{
     private int type;
     private int visible;
     private int zan;
+
+    @Generated(hash = 1187781664)
+    public HomePage(long db_index, String apkLink, String author, int chapterId,
+            String chapterName, boolean collect, int courseId, String desc,
+            String envelopePic, boolean fresh, int id, String link, String niceDate,
+            String origin, String projectLink, long publishTime, int superChapterId,
+            String superChapterName, String title, int type, int visible, int zan) {
+        this.db_index = db_index;
+        this.apkLink = apkLink;
+        this.author = author;
+        this.chapterId = chapterId;
+        this.chapterName = chapterName;
+        this.collect = collect;
+        this.courseId = courseId;
+        this.desc = desc;
+        this.envelopePic = envelopePic;
+        this.fresh = fresh;
+        this.id = id;
+        this.link = link;
+        this.niceDate = niceDate;
+        this.origin = origin;
+        this.projectLink = projectLink;
+        this.publishTime = publishTime;
+        this.superChapterId = superChapterId;
+        this.superChapterName = superChapterName;
+        this.title = title;
+        this.type = type;
+        this.visible = visible;
+        this.zan = zan;
+    }
+
+    @Generated(hash = 1911342170)
+    public HomePage() {
+    }
 
     public String getApkLink() {
         return apkLink;

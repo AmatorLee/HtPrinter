@@ -25,4 +25,6 @@ public interface BoxView extends BaseView {
     void loadBannerFailed();
 
     void loadHomePageFailed();
+
+    void loadBoxFailed();
 }

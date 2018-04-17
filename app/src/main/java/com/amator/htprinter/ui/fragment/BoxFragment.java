@@ -122,6 +122,11 @@ public class BoxFragment extends BaseFragment<BoxFragmentPresenterImpl> implemen
     }
 
     @Override
+    public void loadBoxFailed() {
+        status_view_manager.onError();
+    }
+
+    @Override
     protected BoxFragmentPresenterImpl injectPresenter() {
         mFragmentComponent.inject(this);
         return mBoxFragmentPresenter;
@@ -157,7 +162,7 @@ public class BoxFragment extends BaseFragment<BoxFragmentPresenterImpl> implemen
             @Override
             public void onAction() {
                 pageIndex = 0;
-                mBoxFragmentPresenter.loadBox(pageIndex);
+                mBoxFragmentPresenter.refreshBox(pageIndex);
                 isRefresh = true;
             }
         });
@@ -165,7 +170,7 @@ public class BoxFragment extends BaseFragment<BoxFragmentPresenterImpl> implemen
             @Override
             public void onAction() {
                 pageIndex++;
-                mBoxFragmentPresenter.loadBox(pageIndex);
+                mBoxFragmentPresenter.loadMoreBox(pageIndex);
                 isLoadMore = true;
             }
         });

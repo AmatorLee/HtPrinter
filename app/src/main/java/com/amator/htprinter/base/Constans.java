@@ -11,7 +11,7 @@ public interface Constans {
 
 
     public static final String BANNER_PATH = "banner/json";
-    public static final String ARTICAL_LIST_PRE="article/list/";
+    public static final String ARTICAL_LIST_PRE = "article/list/";
     public static final String ARTICAL_LIST_BEHIND = "/json";
 
     public static final String PRINTER_NAME_KEY = "printer_name_key";
@@ -21,4 +21,8 @@ public interface Constans {
     public static final int REQUST_PRINTER_CODE = 1000;
     public static final int RESULT_PRINTER_CODE = 2000;
 
+    public static final String BANNER_LASTTIME_KEY = "banner_cache_lsat_time";
+    public static final String HOMEPAGE_LASTTIME_KEY = "homepage_cache_lsat_time";
+
+    public static final String DB_NAME = "HtPrinter-db";
 }

@@ -7,13 +7,26 @@ import org.greenrobot.greendao.annotation.Generated;
 
 import java.io.Serializable;
 
+import static android.os.Build.ID;
+
 /**
  * Created by AmatorLee on 2018/4/11.
  */
-
+@Entity
 public class Banner implements Serializable{
 
     private static final long serialVersionUID = Banner.class.hashCode();
+
+    @Id(autoincrement = true)
+    private long db_index;
+
+    public long getDb_index() {
+        return db_index;
+    }
+
+    public void setDb_index(long db_index) {
+        this.db_index = db_index;
+    }
 
     /**
      * desc : 一起来做个App吧
@@ -33,6 +46,24 @@ public class Banner implements Serializable{
     private String title;
     private int type;
     private String url;
+
+    @Generated(hash = 218476108)
+    public Banner(long db_index, String desc, int id, String imagePath, int isVisible,
+            int order, String title, int type, String url) {
+        this.db_index = db_index;
+        this.desc = desc;
+        this.id = id;
+        this.imagePath = imagePath;
+        this.isVisible = isVisible;
+        this.order = order;
+        this.title = title;
+        this.type = type;
+        this.url = url;
+    }
+
+    @Generated(hash = 2026719322)
+    public Banner() {
+    }
 
     public String getDesc() {
         return desc;

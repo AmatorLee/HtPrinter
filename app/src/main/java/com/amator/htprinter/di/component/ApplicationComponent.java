@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 
+import com.amator.htprinter.dao.DaoSession;
 import com.amator.htprinter.di.ContextLife;
 import com.amator.htprinter.di.PerApp;
 import com.amator.htprinter.di.module.ApplicationModule;
@@ -25,4 +26,7 @@ public interface ApplicationComponent {
     Handler handler();
 
     SharedPreferences getSharePreference();
+
+    DaoSession getDaoSession();
+
 }

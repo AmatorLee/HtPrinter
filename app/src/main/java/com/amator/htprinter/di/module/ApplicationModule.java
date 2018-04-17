@@ -8,9 +8,11 @@ import android.os.Looper;
 import android.preference.PreferenceManager;
 
 import com.amator.htprinter.HtPrinterApplcation;
+import com.amator.htprinter.base.Constans;
+import com.amator.htprinter.dao.DaoMaster;
+import com.amator.htprinter.dao.DaoSession;
 import com.amator.htprinter.di.ContextLife;
 import com.amator.htprinter.di.PerApp;
-
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,14 +33,14 @@ public class ApplicationModule {
     @ContextLife("Application")
     @PerApp
     @Provides
-    public Context provideApplicationContext(){
+    public Context provideApplicationContext() {
         return mApplication.getApplicationContext();
     }
 
 
     @Provides
     @PerApp
-    public SharedPreferences provideSharePreference(){
+    public SharedPreferences provideSharePreference() {
         return PreferenceManager.getDefaultSharedPreferences(provideApplicationContext());
     }
 
@@ -54,8 +56,17 @@ public class ApplicationModule {
 
     @PerApp
     @Provides
-    Handler provideMainHandler(){
+    Handler provideMainHandler() {
         return new Handler(Looper.getMainLooper());
+    }
+
+    @Provides
+    @PerApp
+    public DaoSession provideDaoSession() {
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(mApplication.getApplicationContext(), Constans.DB_NAME, null);
+        SQLiteDatabase database = openHelper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(database);
+        return daoMaster.newSession();
     }
 
 
