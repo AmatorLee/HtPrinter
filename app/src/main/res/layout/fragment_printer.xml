@@ -19,6 +19,16 @@
             android:textColor="#ffff"
             android:textSize="18sp"/>
 
+        <ImageButton
+            android:id="@+id/btn_printer_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical|right"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:src="@mipmap/icon_menu"/>
+
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
@@ -27,9 +37,9 @@
 
         <include
             android:id="@+id/layout_printer_not_connect"
+            layout="@layout/layout_printer_not_connect"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            layout="@layout/layout_printer_not_connect"
             android:visibility="gone"/>
 
 

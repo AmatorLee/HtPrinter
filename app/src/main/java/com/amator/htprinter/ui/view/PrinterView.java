@@ -27,6 +27,7 @@ public interface PrinterView extends BaseView {
 
     void onPrintFailed();
 
+    void handlePrintEvent(String event);
 
     void print(String event);
 }

@@ -25,4 +25,9 @@ public interface Constans {
     public static final String HOMEPAGE_LASTTIME_KEY = "homepage_cache_lsat_time";
 
     public static final String DB_NAME = "HtPrinter-db";
+
+    public static final String QUALITY_KEY = "quality";
+    public static final String DENSITY_KEY = "density";
+    public static final String GAP_TYPE_KEY = "gap_type";
+    public static final String SPEED_KEY = "speed";
 }

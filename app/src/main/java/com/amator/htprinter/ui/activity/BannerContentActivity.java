@@ -226,7 +226,7 @@ public class BannerContentActivity extends BaseActivity<ContentActivityPresenter
         // 使用localStorage则必须打开
         ws.setDomStorageEnabled(true);
         // 排版适应屏幕
-        ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        ws.setLoadWithOverviewMode(true);
     }
 
     @Override
@@ -240,16 +240,17 @@ public class BannerContentActivity extends BaseActivity<ContentActivityPresenter
         JSONObject res = new JSONObject();
         try {
             res.put("url", banner.getUrl());
-            res.put("title", banner.getTitle());
             PrinterType type = null;
             switch (which) {
                 case 1:
                     type = PrinterType.ONE;
                     break;
                 case 2:
+                    res.put("title", banner.getTitle());
                     type = PrinterType.TWO;
                     break;
                 case 3:
+                    res.put("title", banner.getTitle());
                     type = PrinterType.TEXT;
                     break;
             }

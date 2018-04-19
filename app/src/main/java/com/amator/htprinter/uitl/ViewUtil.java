@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.amator.htprinter.HtPrinterApplcation;
-import com.amator.htprinter.R;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.amator.htprinter.R;;
 
 /**
  * Created by AmatorLee on 2018/4/11.
@@ -50,6 +48,11 @@ public class ViewUtil {
         Drawable drawable = null;
         drawable = ViewUtil.getContext().getResources().getDrawable(id);
         return drawable;
+    }
+
+    public static int dip2px(float dpValue) {
+        float scale = ViewUtil.getContext().getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
 }

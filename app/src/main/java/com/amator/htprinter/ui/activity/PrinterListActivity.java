@@ -1,11 +1,8 @@
 package com.amator.htprinter.ui.activity;
 
 import android.bluetooth.BluetoothAdapter;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,7 +15,6 @@ import com.amator.htprinter.presenter.impl.PrinterListActivityPresenterImpl;
 import com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView;
 import com.amator.htprinter.ui.view.PrinterListView;
 import com.amator.htprinter.uitl.DialogUtil;
-import com.amator.htprinter.uitl.StatusViewManager;
 import com.amator.htprinter.uitl.ViewUtil;
 import com.dothantech.lpapi.LPAPI;
 import com.dothantech.printer.IDzPrinter;
@@ -45,18 +41,10 @@ public class PrinterListActivity extends BaseActivity<PrinterListActivityPresent
     private PrinterAdapter printer_adapter;
     private LPAPI api;
     private List<IDzPrinter.PrinterAddress> pairedPrinters;
-    private StatusViewManager status_view_manager;
     private IDzPrinter.PrinterAddress mPrinterAddress = null;
 
     @Override
     protected void setListener() {
-        status_view_manager.setOnRetryClick(new StatusViewManager.onRetryClick() {
-            @Override
-            public void onRetryLoad() {
-                status_view_manager.onLoad();
-                initPrinters();
-            }
-        });
         toolbar_printer_list.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,8 +86,7 @@ public class PrinterListActivity extends BaseActivity<PrinterListActivityPresent
     @Override
     protected void initView(Bundle savedInstanceState) {
         initToolbar();
-        showRefreshView();
-        status_view_manager = StatusViewManager.createView(this, refresh_printer_list);
+//        showRefreshView();
         api = LPAPI.Factory.createInstance();
         initAdapter();
     }
@@ -113,12 +100,10 @@ public class PrinterListActivity extends BaseActivity<PrinterListActivityPresent
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             showToast(ViewUtil.getString(R.string.unsupportedbluetooth));
-            status_view_manager.onError();
             return;
         }
         if (!bluetoothAdapter.isEnabled()) {
             showToast(ViewUtil.getString(R.string.unenablebluetooth));
-            status_view_manager.onError();
             return;
         }
         pairedPrinters = api.getAllPrinterAddresses(null);

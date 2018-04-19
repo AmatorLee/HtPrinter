@@ -3,6 +3,7 @@ package com.amator.htprinter.ui.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.ViewTreeObserver;
 
 import com.amator.htprinter.R;
 import com.amator.htprinter.base.BaseActivity;
@@ -141,4 +142,19 @@ public class MainActivity extends BaseActivity<MainActivityPresenterImpl> implem
             }
         }
     }
+
+    public int getBottomBarHeight(){
+        final int[] height = {0};
+        if (btn_bottom_bar_container != null){
+            btn_bottom_bar_container.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    height[0] = btn_bottom_bar_container.getHeight();
+                    btn_bottom_bar_container.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
+            });
+        }
+        return height[0];
+    }
+
 }

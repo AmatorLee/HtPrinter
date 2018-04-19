@@ -26,10 +26,9 @@ public class DialogUtil {
     public void normal(Context context, String content) {
         dismissDialog();
         dialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
-        dialog.setTitleText("");
-        dialog.setContentText(content);
+        dialog.setTitleText(content);
         dialog.setCancelable(true);
-        dialog.getProgressHelper().setBarColor(context.getColor(R.color.text_value));
+        dialog.getProgressHelper().setBarColor(ViewUtil.getColor(R.color.text_value));
         dialog.show();
     }
 
@@ -62,7 +61,8 @@ public class DialogUtil {
     public void dialogWithConfirmAndCancel(Context context, String content, SweetAlertDialog.OnSweetClickListener confirmListener,
                                            SweetAlertDialog.OnSweetClickListener cancelListener) {
         dialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
-        dialog.setTitleText(content);;
+        dialog.setTitleText(content);
+        ;
         dialog.setConfirmText(context.getString(R.string.ok));
         dialog.setConfirmClickListener(confirmListener);
         dialog.setCancelText(context.getString(R.string.cancel));
@@ -70,5 +70,11 @@ public class DialogUtil {
         dialog.show();
     }
 
+    public boolean isDialogShowing() {
+        if (dialog != null && dialog.isShowing()) {
+            return true;
+        }
+        return false;
+    }
 
 }

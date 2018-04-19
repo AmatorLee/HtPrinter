@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HTPrinter</string>
+    <string name="app_name">热转印打印</string>
     <string name="txt_main_box_name_good">商品</string>
     <string name="txt_main_box_name_printer">打印</string>
     <string name="txt_author">作者:</string>
@@ -46,6 +46,5 @@
     <string name="density">打印浓度</string>
     <string name="gap_type">间隔类型</string>
     <string name="speed">打印速率</string>
-
 
 </resources>

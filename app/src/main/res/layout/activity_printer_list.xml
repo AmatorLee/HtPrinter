@@ -27,6 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:load_more_enable="false"
-        app:refresh_enable="true"></com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView>
+        app:refresh_enable="false"></com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView>
 
 </LinearLayout>

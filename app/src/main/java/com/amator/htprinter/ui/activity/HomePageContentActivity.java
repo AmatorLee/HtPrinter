@@ -226,7 +226,7 @@ public class HomePageContentActivity extends BaseActivity<ContentActivityPresent
         // 使用localStorage则必须打开
         ws.setDomStorageEnabled(true);
         // 排版适应屏幕
-        ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        ws.setLoadWithOverviewMode(true);
     }
 
     @Override
@@ -240,16 +240,17 @@ public class HomePageContentActivity extends BaseActivity<ContentActivityPresent
         JSONObject res = new JSONObject();
         try {
             res.put("url", homePahe.getLink());
-            res.put("title", homePahe.getTitle());
             PrinterType type = null;
             switch (which) {
                 case 1:
                     type = PrinterType.ONE;
                     break;
                 case 2:
+                    res.put("title", homePahe.getTitle());
                     type = PrinterType.TWO;
                     break;
                 case 3:
+                    res.put("title", homePahe.getTitle());
                     type = PrinterType.TEXT;
                     break;
             }
