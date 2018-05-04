@@ -27,4 +27,6 @@ public interface BoxView extends BaseView {
     void loadHomePageFailed();
 
     void loadBoxFailed();
+
+    void initToolbar();
 }

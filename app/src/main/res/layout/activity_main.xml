@@ -44,6 +44,22 @@
             />
 
         <com.chaychan.library.BottomBarItem
+            android:id="@+id/bottom_box"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="20dp"
+            app:iconNormal="@mipmap/voice_normal"
+            app:iconSelected="@mipmap/voice_selected"
+            app:iconWidth="20dp"
+            app:itemMarginTop="6dp"
+            app:itemText="@string/txt_voice"
+            app:itemTextSize="11sp"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/tab_selected_color"
+            />
+
+        <com.chaychan.library.BottomBarItem
             android:id="@+id/bottom_print"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -54,6 +70,22 @@
             app:iconWidth="20dp"
             app:itemMarginTop="6dp"
             app:itemText="@string/txt_main_box_name_printer"
+            app:itemTextSize="11sp"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/tab_selected_color"
+            />
+
+        <com.chaychan.library.BottomBarItem
+            android:id="@+id/bottom_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:iconHeight="20dp"
+            app:iconNormal="@mipmap/ic_home_normal"
+            app:iconSelected="@mipmap/ic_home_selected"
+            app:iconWidth="20dp"
+            app:itemMarginTop="6dp"
+            app:itemText="@string/txt_mine_bar"
             app:itemTextSize="11sp"
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/tab_selected_color"

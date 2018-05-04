@@ -7,7 +7,6 @@ import com.amator.htprinter.di.component.ApplicationComponent;
 import com.amator.htprinter.di.component.DaggerApplicationComponent;
 import com.amator.htprinter.di.module.ApplicationModule;
 import com.itheima.retrofitutils.ItheimaHttp;
-import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
  * Created by AmatorLee on 2018/4/4.
@@ -23,7 +22,6 @@ public class HtPrinterApplcation extends Application{
         super.onCreate();
 //        RxTool.init(this);
         initApplicationComponent();
-        ZXingLibrary.initDisplayOpinion(this);
         ItheimaHttp.init(this, Constans.BASE_URL);
     }
 

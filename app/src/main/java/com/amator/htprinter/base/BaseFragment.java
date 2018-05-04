@@ -22,21 +22,22 @@ import butterknife.Unbinder;
  * Created by AmatorLee on 2018/4/6.
  */
 
-public abstract class BaseFragment<T extends BasePresenterImpl> extends Fragment implements BaseView{
+public abstract class BaseFragment<T extends BasePresenterImpl> extends Fragment implements BaseView {
 
     private View mInflater;
     private Unbinder mUnbinder;
     private T mPresenter;
     protected FragmentComponent mFragmentComponent;
     private static final String TAG = BaseFragment.class.getCanonicalName();
+    protected boolean isCreate = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RxLogTool.d(TAG,"onCreate");
+        RxLogTool.d(TAG, "onCreate");
         initFragmentComponent();
         mPresenter = injectPresenter();
-        if (mPresenter != null){
+        if (mPresenter != null) {
             mPresenter.attachView(this);
         }
     }
@@ -53,7 +54,7 @@ public abstract class BaseFragment<T extends BasePresenterImpl> extends Fragment
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RxLogTool.d(TAG,"onCreateView");
+        RxLogTool.d(TAG, "onCreateView");
         if (mInflater == null) {
             mInflater = inflater.inflate(getLayoutId(), container, false);
             mUnbinder = ButterKnife.bind(this, mInflater);
@@ -64,6 +65,7 @@ public abstract class BaseFragment<T extends BasePresenterImpl> extends Fragment
         if (parent != null) {
             parent.removeView(mInflater);
         }
+        isCreate = true;
         return mInflater;
     }
 
@@ -80,12 +82,12 @@ public abstract class BaseFragment<T extends BasePresenterImpl> extends Fragment
 
     @Override
     public void onDestroyView() {
-        RxLogTool.d(TAG,"onDestroyView");
+        RxLogTool.d(TAG, "onDestroyView");
         super.onDestroyView();
-        if (mPresenter != null){
+        if (mPresenter != null) {
             mPresenter.detachView();
         }
-        if (mUnbinder != null){
+        if (mUnbinder != null) {
             mUnbinder.unbind();
         }
     }
@@ -93,30 +95,30 @@ public abstract class BaseFragment<T extends BasePresenterImpl> extends Fragment
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        RxLogTool.d(TAG,"onActivityCreated");
+        RxLogTool.d(TAG, "onActivityCreated");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        RxLogTool.d(TAG,"onStart");
+        RxLogTool.d(TAG, "onStart");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        RxLogTool.d(TAG,"onResume");
+        RxLogTool.d(TAG, "onResume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        RxLogTool.d(TAG,"onPause");
+        RxLogTool.d(TAG, "onPause");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RxLogTool.d(TAG,"onDestroy");
+        RxLogTool.d(TAG, "onDestroy");
     }
 }

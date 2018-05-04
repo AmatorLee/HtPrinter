@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        app:popupTheme="@style/ToolbarPopupTheme"
+        android:id="@+id/toolbar_voice"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/txt_voice"
+            android:textColor="#ffff"
+            android:textSize="18sp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView
+        android:id="@+id/recycler_voice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:load_more_enable="false"
+        app:refresh_enable="false">
+    </com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView>
+
+</LinearLayout>

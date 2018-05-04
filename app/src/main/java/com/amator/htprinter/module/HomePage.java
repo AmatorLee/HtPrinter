@@ -1,22 +1,21 @@
 package com.amator.htprinter.module;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 
 import java.io.Serializable;
-import org.greenrobot.greendao.annotation.Generated;
-
 
 
 /**
  * Created by AmatorLee on 2018/4/11.
  */
 @Entity
-public class HomePage implements Serializable{
+public class HomePage implements Serializable {
 
     private static final long serialVersionUID = HomePage.class.hashCode();
 
-    @Id(autoincrement = true)
+    @Id
     private long db_index;
 
     public long getDb_index() {
@@ -73,12 +72,20 @@ public class HomePage implements Serializable{
     private int visible;
     private int zan;
 
+    public HomePage copy(int pos) {
+        return new HomePage(pos,apkLink, author, chapterId,
+                chapterName, collect, courseId, desc,
+                envelopePic, fresh, id, link, niceDate,
+                origin, projectLink, publishTime, superChapterId,
+                superChapterName, title, type, visible, zan);
+    }
+
     @Generated(hash = 1187781664)
     public HomePage(long db_index, String apkLink, String author, int chapterId,
-            String chapterName, boolean collect, int courseId, String desc,
-            String envelopePic, boolean fresh, int id, String link, String niceDate,
-            String origin, String projectLink, long publishTime, int superChapterId,
-            String superChapterName, String title, int type, int visible, int zan) {
+                    String chapterName, boolean collect, int courseId, String desc,
+                    String envelopePic, boolean fresh, int id, String link, String niceDate,
+                    String origin, String projectLink, long publishTime, int superChapterId,
+                    String superChapterName, String title, int type, int visible, int zan) {
         this.db_index = db_index;
         this.apkLink = apkLink;
         this.author = author;

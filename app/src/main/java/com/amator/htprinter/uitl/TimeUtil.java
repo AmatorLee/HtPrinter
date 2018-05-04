@@ -21,8 +21,8 @@ public class TimeUtil {
     public static boolean isBannerCanCache() {
         long curTime = System.currentTimeMillis();
         SharedPreferences sharePreference = HtPrinterApplcation.getsApplicationComponent().getSharePreference();
-        long lastTime = sharePreference.getLong(Constans.BANNER_LASTTIME_KEY, 0L);
-        if (lastTime == 0L) {
+        long lastTime = sharePreference.getLong(Constans.BANNER_LASTTIME_KEY, 0);
+        if (lastTime == 0) {
             return true;
         }
         if (curTime < lastTime) return false;
@@ -33,8 +33,9 @@ public class TimeUtil {
     public static boolean isBannerCanQuery(){
         long curTime = System.currentTimeMillis();
         SharedPreferences sharePreference = HtPrinterApplcation.getsApplicationComponent().getSharePreference();
-        long lastTime = sharePreference.getLong(Constans.BANNER_LASTTIME_KEY, 0L);
-        if (lastTime == 0L) {
+        long lastTime = sharePreference.getLong(Constans.BANNER_LASTTIME_KEY, 0);
+        RxLogTool.d("Time","banner_lastTime: "  + lastTime);
+        if (lastTime == 0) {
             return false;
         }
         long tmp = curTime - lastTime;
@@ -44,8 +45,9 @@ public class TimeUtil {
     public static boolean isHomePageCanQuery(){
         long curTime = System.currentTimeMillis();
         SharedPreferences sharePreference = HtPrinterApplcation.getsApplicationComponent().getSharePreference();
-        long lastTime = sharePreference.getLong(Constans.HOMEPAGE_LASTTIME_KEY, 0L);
-        if (lastTime == 0L) {
+        long lastTime = sharePreference.getLong(Constans.HOMEPAGE_LASTTIME_KEY, 0);
+        RxLogTool.d("Time","homepage_lastTime: "  + lastTime);
+        if (lastTime == 0) {
             return false;
         }
         long tmp = curTime - lastTime;
@@ -60,8 +62,8 @@ public class TimeUtil {
     public static boolean isHomePageCanCache() {
         long curTime = System.currentTimeMillis();
         SharedPreferences sharePreference = HtPrinterApplcation.getsApplicationComponent().getSharePreference();
-        long lastTime = sharePreference.getLong(Constans.HOMEPAGE_LASTTIME_KEY, 0L);
-        if (lastTime == 0L) {
+        long lastTime = sharePreference.getLong(Constans.HOMEPAGE_LASTTIME_KEY, 0);
+        if (lastTime == 0) {
             return true;
         }
         if (curTime < lastTime) return false;
@@ -77,7 +79,7 @@ public class TimeUtil {
 
     public static void deleteHomePageCurTimeCache() {
         SharedPreferences preference = HtPrinterApplcation.getsApplicationComponent().getSharePreference();
-        long lastTime = 0L;
+        long lastTime = 0;
         preference.edit().putLong(Constans.HOMEPAGE_LASTTIME_KEY, lastTime).apply();
     }
 
@@ -89,7 +91,7 @@ public class TimeUtil {
 
     public static void deleteBannerCurTimeCache() {
         SharedPreferences preference = HtPrinterApplcation.getsApplicationComponent().getSharePreference();
-        long lastTime = 0L;
+        long lastTime = 0;
         preference.edit().putLong(Constans.BANNER_LASTTIME_KEY, lastTime).apply();
     }
 

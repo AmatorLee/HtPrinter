@@ -61,7 +61,7 @@ public class HomePageDao extends AbstractDao<HomePage, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"HOME_PAGE\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: db_index
+                "\"_id\" INTEGER PRIMARY KEY NOT NULL ," + // 0: db_index
                 "\"APK_LINK\" TEXT," + // 1: apkLink
                 "\"AUTHOR\" TEXT," + // 2: author
                 "\"CHAPTER_ID\" INTEGER NOT NULL ," + // 3: chapterId

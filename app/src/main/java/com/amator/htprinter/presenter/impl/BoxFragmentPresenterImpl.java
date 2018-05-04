@@ -51,15 +51,18 @@ public class BoxFragmentPresenterImpl extends BasePresenterImpl<BoxView> impleme
             mView.showToast(ViewUtil.getString(R.string.txt_no_net));
             List<Banner> banners = getBannerFromDB();
             List<HomePage> homePages = getHomePageFromDB();
-            if (banners == null && homePages == null) {
+            if (banners == null || homePages == null) {
                 mView.loadBoxFailed();
-            } else if (banners != null && banners.size() > 0) {
-                mView.loadBannerSucceed(banners);
-            } else if (homePages != null && homePages.size() > 0) {
-                mView.loadHomePageSucceed(homePages);
-            } else {
-                mView.loadBoxFailed();
+                return;
             }
+            if (banners.size() == 0 || homePages.size() == 0) {
+                mView.loadBoxFailed();
+                return;
+            } else {
+                mView.loadBannerSucceed(banners);
+                mView.loadHomePageSucceed(homePages);
+            }
+
         } else {
             requestBanner();
             requestHomePages(index);

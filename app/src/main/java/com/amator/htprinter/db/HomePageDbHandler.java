@@ -3,16 +3,16 @@ package com.amator.htprinter.db;
 import com.amator.htprinter.HtPrinterApplcation;
 import com.amator.htprinter.dao.HomePageDao;
 import com.amator.htprinter.module.HomePage;
-import com.amator.htprinter.module.HomePage;
 import com.amator.htprinter.uitl.TimeUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by AmatorLee on 2018/4/17.
  */
 
-public class HomePageDbHandler implements DBHandler<HomePage>{
+public class HomePageDbHandler implements DBHandler<HomePage> {
     public boolean isCanCache() {
         return TimeUtil.isHomePageCanCache();
     }
@@ -28,26 +28,40 @@ public class HomePageDbHandler implements DBHandler<HomePage>{
 
     @Override
     public void insertAll(List<HomePage> banners) {
+        boolean isLogin = HtPrinterApplcation.getsApplicationComponent().getSharePreference().getBoolean("isLogin",false);
+        if (!isLogin){
+            return;
+        }
         if (banners != null && banners.size() > 0) {
             if (!isCanCache()) {
                 return;
             }
-            getHomePageDao().insertOrReplaceInTx(banners);
+            List<HomePage> datas = new ArrayList<>(banners.size());
+            for (int i = 0; i < banners.size(); i++) {
+                datas.add(i,banners.get(i).copy(i));
+            }
+            deleteAll();
+            getHomePageDao().insertOrReplaceInTx(datas);
             TimeUtil.saveHomePageCurTime();
         }
+    }
+
+    @Override
+    public void intsert(HomePage page) {
+        getHomePageDao().insertOrReplace(page);
     }
 
     @Override
     public void updateAll(List<HomePage> banners) {
-        if (banners != null && banners.size() > 0) {
-            getHomePageDao().updateInTx(banners);
-            TimeUtil.saveHomePageCurTime();
-        }
+//        if (banners != null && banners.size() > 0) {
+//            getHomePageDao().updateInTx(banners);
+//            TimeUtil.saveHomePageCurTime();
+//        }
     }
 
     @Override
     public List<HomePage> queryAll() {
-        if (!isCanRead()) {
+        if (isCanRead()) {
             return getHomePageDao().loadAll();
         } else {
             getHomePageDao().deleteAll();
@@ -57,10 +71,8 @@ public class HomePageDbHandler implements DBHandler<HomePage>{
     }
 
     @Override
-    public void deleteAll(List<HomePage> banners) {
-        if (banners != null && banners.size() > 0) {
-            getHomePageDao().deleteInTx(banners);
-            TimeUtil.deleteHomePageCurTimeCache();
-        }
+    public void deleteAll() {
+        getHomePageDao().deleteAll();
+        TimeUtil.deleteHomePageCurTimeCache();
     }
 }

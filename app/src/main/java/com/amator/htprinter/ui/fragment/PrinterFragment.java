@@ -3,27 +3,22 @@ package com.amator.htprinter.ui.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.amator.htprinter.R;
 import com.amator.htprinter.base.BaseFragment;
 import com.amator.htprinter.base.Constans;
 import com.amator.htprinter.dialog.ActionSheetDialog;
+import com.amator.htprinter.module.VoiceBean;
 import com.amator.htprinter.presenter.impl.PrinterFragmentPresenterImpl;
-import com.amator.htprinter.ui.activity.MainActivity;
 import com.amator.htprinter.ui.activity.PrinterListActivity;
 import com.amator.htprinter.ui.view.PrinterView;
 import com.amator.htprinter.uitl.DialogUtil;
@@ -84,7 +79,7 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
             switch (state) {
                 case Connected:
                 case Connected2:
-                    if (timer != null){
+                    if (timer != null) {
                         timer.cancel();
                         timer = null;
                     }
@@ -96,7 +91,7 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
                     });
                     break;
                 case Disconnected:
-                    if (timer != null){
+                    if (timer != null) {
                         timer.cancel();
                         timer = null;
                     }
@@ -200,6 +195,36 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
         if (!TextUtils.isEmpty(event)) {
             handlePrintEvent(event);
             this.event = null;
+        }
+        if (mVoiceBean != null) {
+            handlePrintVoice(mVoiceBean, type);
+            mVoiceBean = null;
+        }
+    }
+
+    private void handlePrintVoice(VoiceBean bean, PrinterType type) {
+        switch (type) {
+            case ONE:
+                if (PrinterInteractor.print1dCode(bean.getMessage(), printer_api, printWithBundle(1, 90))) {
+                    onPrinStart();
+                } else {
+                    onPrintFailed();
+                }
+                break;
+            case TWO:
+                if (PrinterInteractor.print2DCode(bean.getMessage(), printer_api, printWithBundle(1, 0))) {
+                    onPrinStart();
+                } else {
+                    onPrintFailed();
+                }
+                break;
+            case TEXT:
+                if (PrinterInteractor.printText(bean.getMessage(), printer_api, printWithBundle(1, 0))) {
+                    onPrinStart();
+                } else {
+                    onPrintFailed();
+                }
+                break;
         }
     }
 
@@ -367,20 +392,21 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
     }
 
     private Timer timer = null;
+
     private void startTimer() {
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 retry++;
-                if (retry >= 5){
+                if (retry >= 5) {
                     retry = 0;
                     timer.cancel();
                     timer = null;
                     DialogUtil.newInstance().dismissDialog();
                 }
             }
-        },1000,1000);
+        }, 1000, 1000);
     }
 
     public Animation createAnimation() {
@@ -484,5 +510,17 @@ public class PrinterFragment extends BaseFragment<PrinterFragmentPresenterImpl> 
                 gap_type_res = PrinterOptions.getPrintType(mFragmentComponent.getActivityContext(), printer_address);
                 break;
         }
+    }
+
+    private VoiceBean mVoiceBean;
+    private PrinterType type;
+
+    public void printVoiceBean(VoiceBean event, PrinterType type) {
+        if (!isPrinterConnected()) {
+            this.mVoiceBean = event;
+            this.type = type;
+            return;
+        }
+        handlePrintVoice(event, type);
     }
 }

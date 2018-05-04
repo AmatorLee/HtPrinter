@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_height="match_parent">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
+        app:popupTheme="@style/ToolbarPopupTheme"
         android:id="@+id/toolbar_box"
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
 
         <TextView
-            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/txt_main_box_name_good"
             android:textColor="#ffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textSize="18sp"/>
 
     </android.support.v7.widget.Toolbar>
 
     <com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView
         android:id="@+id/recycler_refresh"
-        app:load_more_enable="true"
-        app:refresh_enable="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView>
+        android:layout_height="match_parent"
+        app:load_more_enable="true"
+        app:refresh_enable="true"></com.amator.htprinter.refreshRecyclerView.RefreshRecyclerView>
 
 
 </LinearLayout>

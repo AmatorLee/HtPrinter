@@ -30,4 +30,7 @@ public interface Constans {
     public static final String DENSITY_KEY = "density";
     public static final String GAP_TYPE_KEY = "gap_type";
     public static final String SPEED_KEY = "speed";
+
+    public static final String ALAMI_APP_ID = "8be3817fec384db8a5a2cbbd8976b3b6";
+    public static final String ALAMI_APP_SECRET = "7dc6146ac0454567bc64120c184a7856";
 }

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.yuzhiqiang1993:zxing-2.1.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/zxing-2.1.4.aar/78962faa4d42bf2deef134eea25197a2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/zxing-2.1.4.aar/78962faa4d42bf2deef134eea25197a2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/zxing-2.1.4.aar/78962faa4d42bf2deef134eea25197a2/jars/libs/core-3.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

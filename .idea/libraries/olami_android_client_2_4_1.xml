@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="olami-android-client-2.4.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/ff6550f2bda4fb4a813e5cef48ad4365886d575a/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/ff6550f2bda4fb4a813e5cef48ad4365886d575a/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ai.olami/olami-android-client/2.4.1/1961a290e95dcd702864859b331190328001be/olami-android-client-2.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

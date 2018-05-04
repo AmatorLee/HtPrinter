@@ -6,10 +6,8 @@ import android.support.v7.app.AlertDialog;
 
 import com.amator.htprinter.R;
 import com.amator.htprinter.adapter.ParamAdapter;
-import com.dothantech.lpapi.LPAPI;
 import com.dothantech.printer.IDzPrinter;
 
-import static com.uuzuche.lib_zxing.DisplayUtil.density;
 
 
 /**

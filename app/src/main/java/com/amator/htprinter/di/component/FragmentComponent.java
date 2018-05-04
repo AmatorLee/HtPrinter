@@ -3,13 +3,12 @@ package com.amator.htprinter.di.component;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Handler;
 
 import com.amator.htprinter.di.ContextLife;
-import com.amator.htprinter.di.PerApp;
 import com.amator.htprinter.di.PerFragment;
 import com.amator.htprinter.di.module.FragmentModule;
 import com.amator.htprinter.ui.fragment.BoxFragment;
+import com.amator.htprinter.ui.fragment.MineFragment;
 import com.amator.htprinter.ui.fragment.PrinterFragment;
 
 import dagger.Component;
@@ -34,5 +33,7 @@ public interface FragmentComponent {
     void inject(BoxFragment fragment);
 
     void inject(PrinterFragment fragment);
+
+    void inject(MineFragment fragment);
 
 }

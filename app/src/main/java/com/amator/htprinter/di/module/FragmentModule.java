@@ -5,8 +5,6 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.amator.htprinter.di.ContextLife;
-import com.amator.htprinter.di.PerActivity;
-import com.amator.htprinter.di.PerApp;
 import com.amator.htprinter.di.PerFragment;
 
 import dagger.Module;

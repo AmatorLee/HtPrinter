@@ -2,22 +2,20 @@ package com.amator.htprinter.module;
 
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 import java.io.Serializable;
-
-import static android.os.Build.ID;
 
 /**
  * Created by AmatorLee on 2018/4/11.
  */
 @Entity
-public class Banner implements Serializable{
+public class Banner implements Serializable {
 
     private static final long serialVersionUID = Banner.class.hashCode();
 
-    @Id(autoincrement = true)
+    @Id
     private long db_index;
 
     public long getDb_index() {
@@ -26,6 +24,11 @@ public class Banner implements Serializable{
 
     public void setDb_index(long db_index) {
         this.db_index = db_index;
+    }
+
+    public Banner copy(int pos) {
+        return new Banner(pos, desc, id, imagePath, isVisible,
+                order, title, type, url);
     }
 
     /**
@@ -64,6 +67,7 @@ public class Banner implements Serializable{
     @Generated(hash = 2026719322)
     public Banner() {
     }
+
 
     public String getDesc() {
         return desc;

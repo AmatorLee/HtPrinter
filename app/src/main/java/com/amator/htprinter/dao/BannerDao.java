@@ -48,7 +48,7 @@ public class BannerDao extends AbstractDao<Banner, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"BANNER\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: db_index
+                "\"_id\" INTEGER PRIMARY KEY NOT NULL ," + // 0: db_index
                 "\"DESC\" TEXT," + // 1: desc
                 "\"ID\" INTEGER NOT NULL ," + // 2: id
                 "\"IMAGE_PATH\" TEXT," + // 3: imagePath

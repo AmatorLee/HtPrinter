@@ -61,8 +61,8 @@ public class DialogUtil {
     public void dialogWithConfirmAndCancel(Context context, String content, SweetAlertDialog.OnSweetClickListener confirmListener,
                                            SweetAlertDialog.OnSweetClickListener cancelListener) {
         dialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
-        dialog.setTitleText(content);
-        ;
+        dialog.setContentText(content);
+        dialog.setTitleText("");
         dialog.setConfirmText(context.getString(R.string.ok));
         dialog.setConfirmClickListener(confirmListener);
         dialog.setCancelText(context.getString(R.string.cancel));
