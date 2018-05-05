@@ -48,7 +48,7 @@ public class RecorderRecognizerManager {
 
     private RecorderSpeechRecognizer.RecordState state;
 
-    public void onstart() {
+    public void start() {
         state = mRecorderSpeechRecognizer.getRecordState();
         try {
             if (state == RecorderSpeechRecognizer.RecordState.STOPPED){

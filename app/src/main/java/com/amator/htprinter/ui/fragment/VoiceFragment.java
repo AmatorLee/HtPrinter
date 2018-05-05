@@ -1,5 +1,6 @@
 package com.amator.htprinter.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -38,6 +39,7 @@ import butterknife.BindView;
 public class VoiceFragment extends BaseFragment<VoiceFragmentPresenterImpl> implements VoiceView {
 
 
+    private static final int RECORDER_CODE = 2222;
     @BindView(R.id.toolbar_voice)
     Toolbar mToolbar;
     @BindView(R.id.recycler_voice)
@@ -95,7 +97,7 @@ public class VoiceFragment extends BaseFragment<VoiceFragmentPresenterImpl> impl
         mRefreshRecyclerView.setItemSpace(0, 0, 0, 10);
         mRefreshRecyclerView.setAdapter(mAdapter);
         mStatusViewManager = StatusViewManager.createView(getActivity(), mRefreshRecyclerView);
-        queryVoice();
+//        queryVoice();
     }
 
     @Override
@@ -115,7 +117,8 @@ public class VoiceFragment extends BaseFragment<VoiceFragmentPresenterImpl> impl
                         .onGranted(new Action() {
                             @Override
                             public void onAction(List<String> permissions) {
-                                startActivity(new Intent(getActivity(), RecordActivity.class));
+                                Intent intent = new Intent(getActivity(), RecordActivity.class);
+                                startActivityForResult(intent, RECORDER_CODE);
                             }
                         })
                         .start();
@@ -146,5 +149,13 @@ public class VoiceFragment extends BaseFragment<VoiceFragmentPresenterImpl> impl
 
     public void notifyAdapter() {
         queryVoice();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RECORDER_CODE && resultCode == Activity.RESULT_OK) {
+            queryVoice();
+        }
     }
 }

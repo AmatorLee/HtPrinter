@@ -73,7 +73,7 @@ public class RecordActivity extends BaseActivity<BasePresenterImpl> {
         if (id == R.id.btn_record_state) {
             mRecordState = mRecorderRecognizerManager.getRecordState();
             if (mRecordState == RecorderSpeechRecognizer.RecordState.STOPPED) {
-                mRecorderRecognizerManager.onstart();
+                mRecorderRecognizerManager.start();
                 startAnimation();
                 mBtnState.setEnabled(false);
             } else if (mRecordState == RecorderSpeechRecognizer.RecordState.RECORDING) {
@@ -93,6 +93,7 @@ public class RecordActivity extends BaseActivity<BasePresenterImpl> {
                 public void onClick(SweetAlertDialog sweetAlertDialog) {
                     VoiceBean bean = new VoiceBean(null,mTxtResult.getText().toString(),System.currentTimeMillis());
                     ((VoiceHandler) DbHandlerFactory.create(DbHandlerFactory.VOICE)).intsert(bean);
+                    setResult(RESULT_OK);
                     sweetAlertDialog.dismissWithAnimation();
                     finish();
                 }
